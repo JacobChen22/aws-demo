@@ -1,6 +1,9 @@
 import {Alert, Button, FileInput, Label, TextInput} from "flowbite-react";
 import {useState} from "react";
 
+const VITE_PUBLIC_S3_BUCKET_URL = import.meta.env.VITE_PUBLIC_S3_BUCKET_URL;
+const VITE_API_GATEWAY_URL = import.meta.env.VITE_API_GATEWAY_URL;
+
 export default function UploadForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [uploadSuccess, setUploadSuccess] = useState(false);
@@ -26,8 +29,10 @@ export default function UploadForm() {
             return;
         }
         setIsSubmitting(true);
+        console.warn(VITE_PUBLIC_S3_BUCKET_URL);
+        console.warn(VITE_API_GATEWAY_URL);
         fetch(
-            process.env.REACT_APP_PUBLIC_S3_BUCKET_URL + formData.file.name,
+            VITE_PUBLIC_S3_BUCKET_URL + formData.file.name,
             {
                 method: 'PUT',
                 body: formData.file,
@@ -40,7 +45,7 @@ export default function UploadForm() {
                     path: formData.file.name
                 };
                 fetch(
-                    process.env.REACT_APP_API_GATEWAY_URL,
+                    VITE_API_GATEWAY_URL,
                     {
                         method: 'PUT',
                         headers: {'Content-Type': 'application/json'},
