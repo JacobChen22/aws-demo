@@ -3,10 +3,10 @@ import {Navbar} from 'flowbite-react';
 export default function NavigatorHeader() {
     return (
         <Navbar fluid>
-            <Navbar.Brand href="https://www.fovus.co/">
-                <img alt="Fovus logo"
+            <Navbar.Brand href="https://www.xxxx.co/">
+                <img alt="logo"
                      className="mr-3 h-5 sm:h-8"
-                     src="./Fovus_Logo_Transparent.png"/>
+                     src="./Logo.png"/>
             </Navbar.Brand>
             <Navbar.Collapse>
                 <Navbar.Link active href="#">
